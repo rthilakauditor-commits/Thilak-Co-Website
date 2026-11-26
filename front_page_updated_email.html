@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thilak & Co | Chartered Accountants</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9fbfd;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #0b3c7c; /* Deep blue matching the business card */
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #fff;
+            overflow: hidden;
+        }
+        .logo-placeholder img {
+            width: 100%;
+            height: auto;
+        }
+        .firm-name {
+            display: flex;
+            flex-direction: column;
+        }
+        .firm-name h1 {
+            margin: 0;
+            font-size: 1.8em;
+            letter-spacing: 1px;
+        }
+        .firm-name span {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #b0c4de;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        nav a:hover {
+            color: #b0c4de;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #0b3c7c;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero h2 { font-size: 2.5em; margin-bottom: 10px; }
+        .hero p { font-size: 1.2em; max-width: 700px; margin: 0 auto; color: #e1e8f0; }
+
+        /* Main Content Grid */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            color: #0b3c7c;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        /* Services Section - inspired by the clean service-grid layout of rrpm.co.in */
+        #services {
+            padding: 20px 0 55px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #0b3c7c;
+            font-size: 2.15em;
+            margin: 0 0 12px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            max-width: 720px;
+            margin: 0 auto 38px;
+            text-align: center;
+            color: #777;
+            font-size: 1em;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            margin-bottom: 20px;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid #e7e7e7;
+            border-radius: 3px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.11);
+        }
+
+        .service-icon {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #eef4fa, #f8fafc);
+            border-bottom: 1px solid #edf0f3;
+        }
+
+        .service-icon svg {
+            width: 72px;
+            height: 72px;
+            fill: none;
+            stroke: #0b3c7c;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-content {
+            padding: 23px 22px 25px;
+        }
+
+        .service-card h3 {
+            color: #0b3c7c;
+            margin: 0 0 10px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #777;
+            font-size: .94em;
+            line-height: 1.65;
+            min-height: 50px;
+            margin: 0 0 16px;
+        }
+
+        .service-link {
+            display: inline-block;
+            color: #0b3c7c;
+            text-decoration: none;
+            font-size: .86em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .service-link:hover {
+            color: #07254d;
+        }
+
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-icon {
+                height: 130px;
+            }
+        }
+
+
+        /* Contact Section */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .contact-details { flex: 1; min-width: 300px; }
+        .contact-details h3 {
+            color: #0b3c7c;
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .principal-title {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 25px;
+            display: block;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        .icon {
+            font-size: 1.2em;
+            background: #f0f4f8;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #07254d;
+            color: #a0b2c6;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="logo-placeholder">
+                <img src="/Users/deepak/Desktop/CA website/official logo.webp" alt="CA Logo" onerror="this.style.display='none'">
+            </div>
+            <div class="firm-name">
+                <h1>Thilak & Co</h1>
+                <span>Chartered Accountants</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Expert Financial & Advisory Services</h2>
+        <p>Providing strategic auditing, taxation, and business advisory solutions tailored for your growth and compliance.</p>
+    </section>
+
+    <div class="container">
+
+        <section id="services">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">
+                Professional accounting, audit, taxation and advisory solutions designed to help your business stay compliant and grow with confidence.
+            </p>
+
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" aria-hidden="true">
+                            <path d="M10 50h44M14 44V16h36v28M20 22h24M20 30h24M20 38h15"/>
+                            <path d="M43 34l4 4 7-8"/>
+                        </svg>
+                    </div>
+                    <div class="service-content">
+                        <h3>Audit Services</h3>
+                        <p>Statutory, internal and tax audit support with clear reporting and practical compliance guidance.</p>
+                        <a class="service-link" href="#contact">Read more →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" aria-hidden="true">
+                            <circle cx="32" cy="32" r="22"/>
+                            <path d="M32 18v28M38 24c-2-3-11-3-11 2 0 7 13 3 13 10 0 6-10 7-14 2"/>
+                        </svg>
+                    </div>
+                    <div class="service-content">
+                        <h3>Financial Planning</h3>
+                        <p>Cash-flow analysis, budgeting and financial planning to support better business decisions.</p>
+                        <a class="service-link" href="#contact">Read more →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" aria-hidden="true">
+                            <rect x="11" y="14" width="42" height="36" rx="3"/>
+                            <path d="M20 25h24M20 33h24M20 41h13"/>
+                            <circle cx="46" cy="42" r="7"/>
+                            <path d="M46 38v8M42 42h8"/>
+                        </svg>
+                    </div>
+                    <div class="service-content">
+                        <h3>Payroll Management</h3>
+                        <p>Payroll processing and statutory compliance support to keep employee payments accurate and timely.</p>
+                        <a class="service-link" href="#contact">Read more →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" aria-hidden="true">
+                            <rect x="14" y="11" width="36" height="42" rx="3"/>
+                            <path d="M21 21h22M21 29h22M21 37h14M21 45h9"/>
+                            <path d="M44 38l4 4 7-8"/>
+                        </svg>
+                    </div>
+                    <div class="service-content">
+                        <h3>Income Tax</h3>
+                        <p>Income tax planning, return filing, assessments and advisory services for individuals and businesses.</p>
+                        <a class="service-link" href="#contact">Read more →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" aria-hidden="true">
+                            <path d="M14 17h36v30H14z"/>
+                            <path d="M21 25h22M21 32h22M21 39h15"/>
+                            <path d="M39 44l4-4 4 4"/>
+                        </svg>
+                    </div>
+                    <div class="service-content">
+                        <h3>GST</h3>
+                        <p>GST registration, return compliance, reconciliations and practical tax strategy for your business.</p>
+                        <a class="service-link" href="#contact">Read more →</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" aria-hidden="true">
+                            <path d="M15 12h34v40H15z"/>
+                            <path d="M22 21h20M22 29h20M22 37h20M22 45h12"/>
+                            <path d="M42 45l4 4 6-7"/>
+                        </svg>
+                    </div>
+                    <div class="service-content">
+                        <h3>Book Keeping</h3>
+                        <p>Reliable day-to-day accounting, ledger maintenance and financial statement preparation.</p>
+                        <a class="service-link" href="#contact">Read more →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-details">
+                    <h3>CA THILAK RAMESH <span style="font-size: 0.7em; font-weight: normal;">B.Com., ACA</span></h3>
+                    <span class="principal-title">Chartered Accountant</span>
+                    
+                    <div class="contact-item">
+                        <div class="icon">📞</div>
+                        <div>
+                            +91 73589 70707<br>
+                            +91 93605 66957
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">✉️</div>
+                        <div>rthilak.auditor@gmail.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=XXWV%2BW2M%2C+Olymbus%2C+Ramanathapuram%2C+Coimbatore%2C+Tamil+Nadu+641045" target="_blank" style="color: #333; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#0b3c7c'" onmouseout="this.style.color='#333'">
+                                XXWV+W2M, Olymbus, Ramanathapuram,<br>
+                                Coimbatore, Tamil Nadu 641045
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <button class="contact-btn" onclick="document.getElementById('contactModal').style.display='flex'" style="cursor:pointer; font-size:1.2em; font-weight: normal; padding: 20px ;background-color: #07254d ;color: #a0b2c6;">Message Us</button>
+                </div>
+                
+                <div style="flex: 1; min-width: 300px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=XXWV+W2M,+Olymbus,+Ramanathapuram,+Coimbatore,+Tamil+Nadu+641045&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; min-height: 250px;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                    
+<div id="contactModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:1000;">
+    <div style="background:white; padding:30px; border-radius:8px; width:90%; max-width:400px; position:relative;">
+        <span onclick="document.getElementById('contactModal').style.display='none'" style="position:absolute; right:20px; top:15px; cursor:pointer; font-size:1.5em; color:#333;">&times;</span>
+        
+        <h3 style="color:#0b3c7c; margin-top:0;">Send us a message</h3>
+        
+        <form action="https://formsubmit.co/aishwaryasekar98@gmail.com" method="POST" style="display:flex; flex-direction:column; gap:15px;">
+            <input type="hidden" name="_subject" value="New Contact Form Enquiry - Thilak & Co">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html">
+            <input type="text" name="name" placeholder="Your Name" required style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+            <input type="text" name="contact" placeholder="Contact Number" required style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+            <input type="email" name="email" placeholder="Email Address" required style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+            <textarea name="comment" placeholder="Your Message" rows="4" required style="padding:10px; border:1px solid #ccc; border-radius:4px;"></textarea>
+            <button type="submit" style="background:#0b3c7c; color:white; padding:10px; border:none; border-radius:4px; cursor:pointer; font-weight:bold;">Submit Details</button>
+        </form>
+    </div>
+</div>
+                </div>
+                
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Thilak & Co, Chartered Accountants. All rights reserved.</p>
+    </footer>
+
+
+</body>
+</html>
