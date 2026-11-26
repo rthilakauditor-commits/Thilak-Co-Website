@@ -1,0 +1,5 @@
+# Static HTML site: no framework, package manager or build step.
+# The site's files live in the Thilak-Co-Website-main/ folder, which is published as-is.
+[build]
+  publish = "Thilak-Co-Website-main"
+  command = ""
